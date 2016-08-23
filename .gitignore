@@ -33,3 +33,5 @@ _ReSharper*/
 /DemoAngularJs2/node_modules
 /DemoAngular2/node_modules
 /packages
+/MyWebApi/App_Data
+/MySPA/App_Data
