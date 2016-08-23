@@ -6,7 +6,7 @@ This is also used to test how well the TraceHub components could be integrated w
 
 ## MyMVC
 
-This is a ASP.NET MVC applications.
+This is an ASP.NET MVC application.
 
 ### Initial Twists
 
