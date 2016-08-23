@@ -6,7 +6,7 @@ This is also used to test how well the TraceHub components could be integrated w
 
 ## MyMVC
 
-This is an ASP.NET MVC application.
+This is an ASP.NET MVC application that utilize NuGet package **Fonlow.TraceHub**.
 
 ### Initial Twists
 
@@ -184,7 +184,7 @@ In your Web application, you probably already have Web UI to manage users and ro
 
 ## MySPA
 
-This demo project is created through the SPA template with option Web API.
+This demo project is created through the SPA template with option Web API. And NuGet package **Fonlow.TraceHub** is used.
 
 ### Initial Twists
 
@@ -326,7 +326,7 @@ The database used in MySPA is a copy of the one in MyMVC.
 
 ## MyWebApi
 
-This project is created through the Web API template.
+This project is created through the Web API template. NuGet package Fonlow.TraceHub is used.
 
 ### Initial Twists
 
@@ -345,7 +345,19 @@ Then you are done, as long as the user with role "API" is already created.
 
 ## MySimpleWeb
 
-If your ASP.NET Web application is not based on MVC or Web API, you may use NuGet package Fonlow.TraceHub.Slim. Just import this package and you are done. Your simple Web will become a TraceHub. No twist is needed unless you want to apply some security either in your app level or at the IIS level.
+If your ASP.NET Web application is not based on MVC or Web API, you may use NuGet package **Fonlow.TraceHub.Slim**. Just import this package and you are done. Your simple Web will become a TraceHub. 
+
+### Initial Twists
+
+If you don't want authentication for SignalR, you may add the following app settings to Web.config.
+
+```xml
+  <appSettings>
+    <add key="loggingHub_Anonymous" value="true" />
+  </appSettings>
+```
+
+
 
 
 
