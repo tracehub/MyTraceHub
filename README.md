@@ -1,5 +1,6 @@
 # MyTraceHub
-The CS projects created through VS 2015 are to demonstrate how to make existing Web applications have TraceHub functions. 
+
+The CS projects created through VS 2015 are to demonstrate how to make existing Web applications have TraceHub functions through importing one of the NuGet packages of TraceHub.
 
 This is also used to test how well the TraceHub components could be integrated with your Web and service appplications.
 
@@ -16,7 +17,7 @@ This is a ASP.NET MVC applications.
 
 ### Optional twists
 
-Depending on how the scaffolding of your MVC teample had gone through or how you had added functionality, you may or may not need these twists in your existing ASP.NET MVC application.
+Depending on how the scaffolding of your MVC template had gone through or how you had added functionality, you may or may not need these twists in your existing ASP.NET MVC application.
 
 #### 1. In App_Start/Startup.Auth.cs, add the following
 
