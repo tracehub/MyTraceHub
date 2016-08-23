@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWebApi", "MyWebApi\MyWebA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySPA", "MySPA\MySPA.csproj", "{F371A1D6-9526-4AAC-AD1E-7E5929573ADF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySimpleWeb", "MySimpleWeb\MySimpleWeb.csproj", "{A11B36B1-9513-40D2-A349-99AE6C6B8DAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F371A1D6-9526-4AAC-AD1E-7E5929573ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F371A1D6-9526-4AAC-AD1E-7E5929573ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F371A1D6-9526-4AAC-AD1E-7E5929573ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A11B36B1-9513-40D2-A349-99AE6C6B8DAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A11B36B1-9513-40D2-A349-99AE6C6B8DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A11B36B1-9513-40D2-A349-99AE6C6B8DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A11B36B1-9513-40D2-A349-99AE6C6B8DAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
