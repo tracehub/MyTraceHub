@@ -1,5 +1,5 @@
 # MyTraceHub
-Demonstrate how to make existing Web applications have TraceHub functions.
+The CS projects are to demonstrate how to make existing Web applications have TraceHub functions.
 
 This is also used to test how well the TraceHub components could be integrated with your Web and service appplications.
 
@@ -11,8 +11,8 @@ This is a ASP.NET MVC applications.
 
 1. Optionally have Microsoft ApplicationInsights components all uninstalled. These components might have been introduced during scarfolding of MVC.
 2. Update all NuGet packages to the latest.
-3. Install Fonlow.TraceHub NuGet package. And this will introduce references to Fonlow.TraceHub.Core and Microsoft.AspNet.SignalR packages. 
-4. In Startup.cs, add `app.MapSignalR();` 
+3. **Install Fonlow.TraceHub NuGet package. And this will introduce references to Fonlow.TraceHub.Core and Microsoft.AspNet.SignalR packages.**
+4. **In Startup.cs, add `app.MapSignalR();` **
 
 ### Optional twists
 
@@ -144,11 +144,11 @@ Depending on how the scarfolding of your MVC teample had gone through or how you
         }
 ```
 
-** Remarks: **
+**Remarks:**
 
 These code snipets are generated during scaffolding of ASP.NET Web API, or ASP.NET MVC+Web API. However, in certain versions of ASP.NET MVC template, even if you have added option Web API, the scaffolding won't generated the codes needed for Web API. So you just need to ensure these codes exist in your MVC project. Nevertheless, if you have other designs for authentication of SignalR, you may probably ignore these steps above. 
 
-#### 4. Add some CSS scripts to make the trace message looking beautiful
+#### 4. Add some CSS scripts to make the trace message look beautiful
 
 ```css
 /*About Logging*/
@@ -169,7 +169,7 @@ span.origin{background-color:burlywood}
 ```
 
 
-#### 5. initialze some data:
+#### 5. Initialze some user data
 
 1. In table AspNetRoles of LocalDB, add 1 role: API.
 2. Run MyMVC, and register a user called api@mytracehub.com, and the password is "Aaaaaa*8", quotes not included.
@@ -177,7 +177,8 @@ span.origin{background-color:burlywood}
 4. In table AspNetUserRoles, add the mapping between UserId and the RoleId of role API.
 
 
-** Remarks: **
+**Remarks:**
+
 In your Web application, you probably already have Web UI to manage users and roles.
 
 ## MySimpleWeb
