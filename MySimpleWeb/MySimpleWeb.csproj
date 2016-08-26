@@ -41,12 +41,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fonlow.TraceHub.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6dfecb68025d5196, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fonlow.TraceHub.Core.1.0.0.0\lib\net45\Fonlow.TraceHub.Common.dll</HintPath>
+    <Reference Include="Fonlow.TraceHub.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=6dfecb68025d5196, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fonlow.TraceHub.Core.1.1.0.0\lib\net45\Fonlow.TraceHub.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fonlow.TraceHub.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6dfecb68025d5196, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fonlow.TraceHub.Core.1.0.0.0\lib\net45\Fonlow.TraceHub.Core.dll</HintPath>
+    <Reference Include="Fonlow.TraceHub.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=6dfecb68025d5196, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fonlow.TraceHub.Core.1.1.0.0\lib\net45\Fonlow.TraceHub.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -99,6 +99,7 @@
     <Content Include="Logging.html" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
+    <Content Include="Scripts\custom\logging.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
     <Content Include="Scripts\jquery-3.1.0.slim.js" />
@@ -123,7 +124,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Scripts\custom\logging.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
     <Content Include="Web.config" />
