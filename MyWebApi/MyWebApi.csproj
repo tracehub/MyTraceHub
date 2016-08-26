@@ -48,12 +48,12 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fonlow.TraceHub.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=6dfecb68025d5196, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fonlow.TraceHub.Core.1.1.0.0\lib\net45\Fonlow.TraceHub.Common.dll</HintPath>
+    <Reference Include="Fonlow.TraceHub.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6dfecb68025d5196, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fonlow.TraceHub.Core.1.0.0.0\lib\net45\Fonlow.TraceHub.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fonlow.TraceHub.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=6dfecb68025d5196, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fonlow.TraceHub.Core.1.1.0.0\lib\net45\Fonlow.TraceHub.Core.dll</HintPath>
+    <Reference Include="Fonlow.TraceHub.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6dfecb68025d5196, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fonlow.TraceHub.Core.1.0.0.0\lib\net45\Fonlow.TraceHub.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -273,7 +273,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Logging.html" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
