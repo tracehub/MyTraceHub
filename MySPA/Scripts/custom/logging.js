@@ -6,6 +6,7 @@ var Fonlow_Logging;
         function ClientFunctions() {
             var _this = this;
             this.bufferSize = 10000;
+            this.stayWithLatest = true;
             this.writeTrace = function (tm) {
                 _this.addLine(tm);
             };
@@ -25,7 +26,7 @@ var Fonlow_Logging;
                 });
                 $('#traces').append(itemsToAppend);
                 lineCount += tms.length;
-                _this.ScrollToBottom();
+                _this.scrollToBottom();
             };
         }
         ClientFunctions.prototype.eventTypeToString = function (t) {
@@ -76,7 +77,7 @@ var Fonlow_Logging;
             $('#traces').append(newLine);
             evenLine = !evenLine;
             lineCount++;
-            this.ScrollToBottom();
+            this.scrollToBottom();
         };
         ClientFunctions.prototype.getShortTimeText = function (dt) {
             var h = dt.getHours().toString();
@@ -93,8 +94,13 @@ var Fonlow_Logging;
                 $('#traces').append('<li><strong>' + m + '</li>');
             });
         };
-        ClientFunctions.prototype.ScrollToBottom = function () {
-            $("html, body").animate({ scrollTop: $(document).height() - $(window).height() });
+        ClientFunctions.prototype.scrollToBottom = function () {
+            if (this.stayWithLatest) {
+                $('html, body').scrollTop($(document).height());
+            }
+        };
+        ClientFunctions.prototype.scrollToBottomSuspendedToggle = function (checked, id) {
+            this.stayWithLatest = checked;
         };
         return ClientFunctions;
     }());
@@ -115,15 +121,6 @@ var lineCount = 0;
 var clientFunctions = new Fonlow_Logging.ClientFunctions();
 var managementFunctions = new Fonlow_Logging.ManagementFunctions();
 var originalText = "saveTime";
-//$("span.time").hover(
-//    function () {
-//        originalText = $(this).text();
-//        $(this).text($(this).attr("value"));
-//    },
-//    function () {
-//        $(this).text(originalText);
-//    }
-//);
 $(document).on("mouseenter", "span.time", function () {
     originalText = $(this).text();
     $(this).text($(this).attr("value"));
