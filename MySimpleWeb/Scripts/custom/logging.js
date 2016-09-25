@@ -1,16 +1,64 @@
-
+///<reference path="../typings/jquery/jquery.d.ts" />
+///<reference path="../typings/signalr/signalr.d.ts" />
 var Fonlow_Logging;
 (function (Fonlow_Logging) {
+    (function (ClientType) {
+        ClientType[ClientType["Undefined"] = 0] = "Undefined";
+        ClientType[ClientType["TraceListener"] = 1] = "TraceListener";
+        ClientType[ClientType["Browser"] = 2] = "Browser";
+        ClientType[ClientType["Console"] = 4] = "Console";
+    })(Fonlow_Logging.ClientType || (Fonlow_Logging.ClientType = {}));
+    var ClientType = Fonlow_Logging.ClientType;
+    var WebUiFunctions = (function () {
+        function WebUiFunctions() {
+        }
+        WebUiFunctions.prototype.renderClientsInfo = function (clientsInfo) {
+            if (clientsInfo == null)
+                return false;
+            if (clientsInfo.length == 0)
+                return true;
+            var divs = clientsInfo.map(function (m) {
+                var div = $('<div/>', { class: 'hubClientInfo' });
+                div.append($('<span/>', { class: 'hc-type' }).text(Fonlow_Logging.ClientType[m.clientType]));
+                div.append($('<span/>', { class: 'hc-userAgent' }).text(m.userAgent));
+                div.append($('<span/>', { class: 'hc-ip' }).text(m.ipAddress));
+                div.append($('<span/>', { class: 'time' }).text(m.connectedTimeUtc.toString()));
+                if (m.clientType == Fonlow_Logging.ClientType.TraceListener) {
+                    div.append($('<span/>', { class: 'hc-template' }).text(m.template));
+                    div.append($('<span/>', { class: 'origin' }).text(m.origin));
+                }
+                div.append($('<span/>', { class: 'hc-user' }).text(m.username));
+                div.append($('<span/>', { class: 'hc-id' }).text(m.id));
+                return div;
+            });
+            var list = $('<li/>', { class: 'hubClients' });
+            list.append(divs);
+            $('#traces').append(list);
+            lineCount++;
+            return true;
+        };
+        return WebUiFunctions;
+    }());
+    Fonlow_Logging.WebUiFunctions = WebUiFunctions;
     var ClientFunctions = (function () {
         function ClientFunctions() {
             var _this = this;
-            this.bufferSize = 10000;
+            this.bufferSize = 10000; //this will be altered by Web.config through a server call retrieveClientSettings once the signalR connection is established.
             this.stayWithLatest = true;
+            this.sourceLevels = -1; //all
             this.writeTrace = function (tm) {
+                if ((tm.eventType & _this.sourceLevels) == 0)
+                    return;
                 _this.addLine(tm);
             };
             //Write traces in fixed size queue defined by this.bufferSize 
             this.writeTraces = function (tms) {
+                if (_this.sourceLevels > 0) {
+                    tms = tms.filter(function (m) { return (m.eventType & _this.sourceLevels) != 0; });
+                }
+                else if (_this.sourceLevels === 0) {
+                    return;
+                }
                 //Clean up some space first
                 if (lineCount + tms.length > _this.bufferSize) {
                     var numberOfLineToRemove = lineCount + tms.length - _this.bufferSize;
@@ -58,12 +106,13 @@ var Fonlow_Logging;
             var et = this.eventTypeToString(tm.eventType);
             var $eventText = $('<span/>', { class: et + ' et' }).text(et + ': ');
             var $timeText = $('<span/>', { class: 'time', value: tm.timeUtc }).text(' ' + this.getShortTimeText(new Date(tm.timeUtc.toString())) + ' '); //The Json object seem to become string rather than Date. A bug in SignalR JS? Now I have to cast it 
-            var $originText = $('<span/>', { class: 'origin' }).text(' ' + tm.origin + '  ');
+            var $originText = $('<span/>', { class: 'origin btn-xs btn-primary', onclick: 'void(0)' }).text(' ' + tm.origin + '  ');
+            var $messageText = $('<span/>', { class: 'message' }).text(tm.message);
             var newLine = $('<li/>', { class: evenLine ? 'even' : 'odd' });
             newLine.append($eventText);
             newLine.append($timeText);
             newLine.append($originText);
-            newLine.append(tm.message);
+            newLine.append($messageText);
             return newLine;
         };
         ClientFunctions.prototype.addLine = function (tm) {
@@ -118,8 +167,10 @@ var Fonlow_Logging;
 var evenLine = false;
 var lineCount = 0;
 var clientFunctions = new Fonlow_Logging.ClientFunctions();
+var webUiFunctions = new Fonlow_Logging.WebUiFunctions();
 var managementFunctions = new Fonlow_Logging.ManagementFunctions();
 var originalText = "saveTime";
+var clientSettings;
 $(document).on("mouseenter", "span.time", function () {
     originalText = $(this).text();
     $(this).text($(this).attr("value"));
@@ -127,20 +178,21 @@ $(document).on("mouseenter", "span.time", function () {
 $(document).on("mouseleave", "span.time", function () {
     $(this).text(originalText);
 });
-
-$(function () {
-    // Reference the auto-generated proxy for the hub.
-    var logging = $.connection.loggingHub;
-
-    logging.client.writeTrace = clientFunctions.writeTrace;
-    logging.client.writeTraces = clientFunctions.writeTraces;
-    logging.client.writeMessage = clientFunctions.writeMessage;
-    logging.client.writeMessages = clientFunctions.writeMessages;
-
-    // Start the connection. Better with these 2 transports. The others are not too slow for this TraceHub
-    $.connection.hub.start({ transport: ['webSockets', 'longPolling'] }).done(function () {
-
-
+$(document).on("click", "span.origin", function () {
+    $(this).siblings('.message').replaceWith(function () {
+        return $(this).prop('tagName') == 'SPAN' ?
+            $('<pre/>', {
+                class: 'message',
+                text: $(this).text()
+            })
+            :
+                $('<span/>', {
+                    class: 'message',
+                    text: $(this).text()
+                });
     });
+});
+$(document).on('change', 'select#sourceLevels', function () {
+    clientFunctions.sourceLevels = parseInt(this.value);
 });
 //# sourceMappingURL=logging.js.map
